@@ -1,0 +1,15 @@
+
+<p><a routerLink="/usuario/form">Usuario ADD</a><p></p>
+
+<table *ngIf="usuarios">
+<tr *ngFor="let usuario of usuarios">
+    <td>ID: {{ usuario.id }}</td>
+    <td>Login: {{ usuario.login }}</td>
+    <td>Nome: {{ usuario.nome }}</td>
+    <td>Senha: {{ usuario.senha }}</td>
+    <td><button [routerLink]="['/usuario/form', usuario.id]">Usuario EDIT</button><td>
+    <td><button (click)="deletar(usuario)">Usuario DELETE</button><td>
+</tr>
+</table>
+
+

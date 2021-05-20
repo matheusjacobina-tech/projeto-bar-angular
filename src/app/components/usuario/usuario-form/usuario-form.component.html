@@ -1,0 +1,28 @@
+<form [formGroup]="formUser" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="id">ID:</label>
+      <input id="id" name="id" type="number"
+      formControlName="id" />
+    </p>
+    <p>
+      <label for="nome">Nome:</label>
+      <input id="nome" name="nome" type="text"
+      formControlName="nome" #nome/>
+      <span *ngIf="formUser.get('nome').errors"> Nome invalido </span>
+    </p>
+    <p>
+      <label for="login">Login:</label>
+      <input id="login" name="login" type="text"
+      formControlName="login" />
+    </p>
+    <p>
+      <label for="senha">Senha:</label>
+      <input id="senha" name="senha" type="password"
+      formControlName="senha" />
+    </p>
+
+    <p>
+      <button type="reset" (click)="resetar()">Reset</button>
+      <button type="submit" [disabled]="formUser.invalid" >Salvar</button>
+    </p>
+</form>
