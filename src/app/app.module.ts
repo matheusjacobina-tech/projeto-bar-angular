@@ -8,6 +8,7 @@ import { routing } from './app.routing';
 import { HomeComponent } from './components/home/home.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioFormComponent } from './components/usuario/usuario-form/usuario-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UsuarioFormComponent } from './components/usuario/usuario-form/usuario-
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    routing
+    routing,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
