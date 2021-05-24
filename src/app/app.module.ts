@@ -1,31 +1,49 @@
-
+// angular
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 
-import { routing } from './app.routing';
-import { HomeComponent } from './components/home/home.component';
-import { UsuarioComponent } from './components/usuario/usuario.component';
-import { UsuarioFormComponent } from './components/usuario/usuario-form/usuario-form.component';
+// material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
+// projeto
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { UsuarioModule } from './components/usuario/usuario.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UsuarioComponent,
-    HomeComponent,
-    UsuarioFormComponent
-  ],
+  declarations: [AppComponent, HomeComponent, MainNavComponent],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    routing,
-    BrowserAnimationsModule
+
+    AppRoutingModule,
+    UsuarioModule,
+
+    // MaterialModule
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
+  exports: [],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

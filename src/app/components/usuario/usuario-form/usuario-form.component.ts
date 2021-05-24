@@ -1,7 +1,8 @@
+import { of } from 'rxjs';
 
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup,  Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // projeto
@@ -63,7 +64,18 @@ export class UsuarioFormComponent implements OnInit {
 
 
 
-  mostrarError(){
-
+  getError(campo: string): Array<string> {
+    const control = this.formUser.get(campo);
+    const msg: Array<string> = Array<string>();
+    if (control.errors.required) {
+      msg.push(`Digite o Valor`);
+    }
+    if (control.errors.minlength) {
+      const atual = control.errors.minlength.actualLength;
+      const requirido = control.errors.minlength.requiredLength;
+      msg.push(`tamanho: ${atual} | ${requirido}`);
+    }
+    return msg;
   }
+
 }

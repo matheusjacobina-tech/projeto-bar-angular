@@ -1,28 +1,42 @@
-<form [formGroup]="formUser" (ngSubmit)="onSubmit()">
-    <p>
-      <label for="id">ID:</label>
-      <input id="id" name="id" type="number"
-      formControlName="id" />
-    </p>
-    <p>
-      <label for="nome">Nome:</label>
-      <input id="nome" name="nome" type="text"
-      formControlName="nome" #nome/>
-      <span *ngIf="formUser.get('nome').errors"> Nome invalido </span>
-    </p>
-    <p>
-      <label for="login">Login:</label>
-      <input id="login" name="login" type="text"
-      formControlName="login" />
-    </p>
-    <p>
-      <label for="senha">Senha:</label>
-      <input id="senha" name="senha" type="password"
-      formControlName="senha" />
-    </p>
+<mat-toolbar>
+  <span>Cadastro de Usuarios</span>
+</mat-toolbar>
 
-    <p>
-      <button type="reset" (click)="resetar()">Reset</button>
-      <button type="submit" [disabled]="formUser.invalid" >Salvar</button>
-    </p>
+<mat-card>
+<form novalidate [formGroup]="formUser" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <mat-label>ID:</mat-label>
+      <input matInput id="id" name="id" type="number" formControlName="id" />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput id="nome" name="nome" type="text" formControlName="nome" />
+      <mat-error *ngIf="formUser.get('nome').errors" >
+        <mat-error *ngFor="let e of getError('nome')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Login:</mat-label>
+      <input matInput id="login" name="login" type="text" formControlName="login" />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Senha:</mat-label>
+      <input matInput id="senha" name="senha" type="password" formControlName="senha" />
+    </mat-form-field>
+  </p>
+
+  <p>
+    <button mat-raised-button type="reset" color="primary" (click)="resetar()">Reset</button>
+    <button mat-raised-button type="submit" color="warn" [disabled]="formUser.invalid" style="margin-left: 20px;">Salvar</button>
+  </p>
 </form>
+</mat-card>
