@@ -1,0 +1,36 @@
+<mat-toolbar>
+  <span>Cadastro de Perfil</span>
+</mat-toolbar>
+
+<mat-card>
+<form novalidate [formGroup]="formPerfil" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <mat-label>ID:</mat-label>
+      <input matInput id="id" name="id" type="number" formControlName="id" />
+      <mat-error *ngIf="formPerfil.get('id').errors" >
+        <mat-error *ngFor="let e of getError('id')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Perfil:</mat-label>
+      <input matInput id="perfil" name="perfil" type="text" formControlName="perfil" />
+      <mat-error *ngIf="formPerfil.get('perfil').errors" >
+        <mat-error *ngFor="let e of getError('perfil')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+
+  <p>
+    <button mat-raised-button type="reset" color="primary" (click)="resetar()">Reset</button>
+    <button mat-raised-button type="submit" color="warn" [disabled]="formPerfil.invalid" style="margin-left: 20px;">Salvar</button>
+  </p>
+</form>
+</mat-card>

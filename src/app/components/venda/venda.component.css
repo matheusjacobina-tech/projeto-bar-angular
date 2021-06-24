@@ -15,10 +15,6 @@ table th {
   padding-inline: 20px;
 }
 
-#excluir {
-  margin-left: 10px;
-}
-
 #toptable {
   display: flex;
   flex-direction: row;

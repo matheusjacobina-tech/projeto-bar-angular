@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <span>Cadastro de Produtos</span>
+</mat-toolbar>
+
+<mat-card>
+<form novalidate [formGroup]="formProduto" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <mat-label>ID:</mat-label>
+      <input matInput id="id" name="id" type="number" formControlName="id" />
+      <mat-error *ngIf="formProduto.get('id').errors" >
+        <mat-error *ngFor="let e of getError('id')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput id="nome" name="nome" type="text" formControlName="nome" />
+      <mat-error *ngIf="formProduto.get('nome').errors" >
+        <mat-error *ngFor="let e of getError('nome')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Descrição:</mat-label>
+      <input matInput id="descricao" name="descricao" type="text" formControlName="descricao" />
+      <mat-error *ngIf="formProduto.get('descricao').errors" >
+        <mat-error *ngFor="let e of getError('descricao')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Valor:</mat-label>
+      <input matInput id="valor" name="valor" type="number" formControlName="valor" />
+      <mat-error *ngIf="formProduto.get('valor').errors" >
+        <mat-error *ngFor="let e of getError('valor')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+
+  <p>
+    <button mat-raised-button type="reset" color="primary" (click)="resetar()">Reset</button>
+    <button mat-raised-button type="submit" color="warn" [disabled]="formProduto.invalid" style="margin-left: 20px;">Salvar</button>
+  </p>
+</form>
+</mat-card>

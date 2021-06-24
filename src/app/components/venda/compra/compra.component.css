@@ -1,0 +1,28 @@
+mat-card {
+  margin: auto;
+  margin-top: 20px;
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_produto {
+  width: 100px;
+  height: 150px;
+  border: 1px solid steelblue;
+}
+
+.list_produto{
+  width: 100%;
+  border-radius: 5px;
+
+  /* background-color: cornflowerblue; */
+  /* border: 1px solid slateblue; */
+
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+}

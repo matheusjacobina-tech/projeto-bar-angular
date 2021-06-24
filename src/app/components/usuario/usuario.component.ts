@@ -1,11 +1,9 @@
 // angular
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 
 // projeto
-import { Usuario } from 'src/app/model/usuario.model';
-import { UsuarioService } from 'src/app/service/usuario.service';
+import { Usuario } from './../../core/model/usuario.model';
+import { UsuarioService } from './../../core/service/usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -14,20 +12,12 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioComponent implements OnInit {
   colunasTabela = ['id', 'nome', 'login', 'perfil', 'acoes'];
-  usuarios: any; // = new MatTableDataSource<Usuario>();
+  usuarios: Array<Usuario>;
 
-  /// @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  // ngAfterViewInit(): void {
-  //   this.usuarios.paginator = this.paginator;
-  // }
-
-  constructor() {
-    const users = UsuarioService.getListUsuario();
-    this.usuarios = users; // new MatTableDataSource(users);
-  }
+  constructor() {}
 
   ngOnInit(): void {
+    this.usuarios = UsuarioService.getListUsuario();
   }
 
   deletar(usuario: Usuario): void {
@@ -44,7 +34,4 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  // convert<T>(array: Array<T>): Observable<Array<T>> {
-  //   return of(array);
-  // }
 }

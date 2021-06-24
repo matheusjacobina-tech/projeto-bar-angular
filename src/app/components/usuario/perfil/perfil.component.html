@@ -1,65 +1,45 @@
 <mat-toolbar>
-  <span>Lista de Usuarios</span>
+  <span>Lista de Perfis</span>
 </mat-toolbar>
 
 <mat-card>
   <div id="toptable">
     <mat-form-field>
-      <mat-label>Filter</mat-label>
+      <mat-label>Buscar</mat-label>
       <input matInput #input>
     </mat-form-field>
     <div>
       <button mat-raised-button type="button" color="primary"
-      routerLink="form/">
-      <mat-icon class="material-icons-outlined">person_add</mat-icon>
-      Usuario ADD
-      </button>
-    </div>
-    <div>
-      <button mat-raised-button type="button" color="primary"
-      routerLink="perfil/form-perfil/">
+      routerLink="form-perfil/">
       <mat-icon>add</mat-icon>Perfil ADD</button>
     </div>
   </div>
 
   <table
     mat-table
-    [dataSource]="usuarios"
+    [dataSource]="perfis"
     class="mat-elevation-z8"
   >
     <!-- id Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID:</th>
-      <td mat-cell *matCellDef="let usuario">{{ usuario.id }}</td>
+      <td mat-cell *matCellDef="let perfil">{{ perfil.id }}</td>
     </ng-container>
 
     <!-- nome Column -->
-    <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef>Nome:</th>
-      <td mat-cell *matCellDef="let usuario">{{ usuario.nome }}</td>
-    </ng-container>
-
-    <!-- login Column -->
-    <ng-container matColumnDef="login">
-      <th mat-header-cell *matHeaderCellDef>Login:</th>
-      <td mat-cell *matCellDef="let usuario">{{ usuario.login }}</td>
-    </ng-container>
-
-    <!-- perfil Column -->
     <ng-container matColumnDef="perfil">
       <th mat-header-cell *matHeaderCellDef>Perfil:</th>
-      <td mat-cell *matCellDef="let usuario">{{ usuario.perfil.perfil }}</td>
+      <td mat-cell *matCellDef="let perfil">{{ perfil.perfil }}</td>
     </ng-container>
 
-    <!-- acoes  Column -->
     <ng-container matColumnDef="acoes">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
-      <td mat-cell *matCellDef="let usuario">
+      <td mat-cell *matCellDef="let perfil">
         <button
           mat-mini-fab
           color="primary"
           aria-label="Editar"
-          [routerLink]="['form/', usuario.id]"
+          [routerLink]="['form-perfil', perfil.id]"
         >
           <mat-icon>edit</mat-icon>
         </button>
@@ -69,7 +49,7 @@
           mat-mini-fab
           color="warn"
           aria-label="Excluir"
-          (click)="deletar(usuario)"
+          (click)="deletar(perfil)"
         >
           <mat-icon>delete</mat-icon>
         </button>
@@ -80,7 +60,8 @@
     <tr mat-row *matRowDef="let row; columns: colunasTabela"></tr>
 
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="5">Sem Registro</td>
+      <td class="mat-cell" colspan="4">Sem Registro</td>
     </tr>
   </table>
 </mat-card>
+

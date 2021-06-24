@@ -8,6 +8,11 @@
     <mat-form-field>
       <mat-label>ID:</mat-label>
       <input matInput id="id" name="id" type="number" formControlName="id" />
+      <mat-error *ngIf="formUser.get('id').errors" >
+        <mat-error *ngFor="let e of getError('id')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
     </mat-form-field>
   </p>
   <p>
@@ -25,12 +30,38 @@
     <mat-form-field>
       <mat-label>Login:</mat-label>
       <input matInput id="login" name="login" type="text" formControlName="login" />
+      <mat-error *ngIf="formUser.get('login').errors" >
+        <mat-error *ngFor="let e of getError('login')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field>
       <mat-label>Senha:</mat-label>
       <input matInput id="senha" name="senha" type="password" formControlName="senha" />
+      <mat-error *ngIf="formUser.get('senha').errors" >
+        <mat-error *ngFor="let e of getError('senha')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Perfil:</mat-label>
+      <select matNativeControl formControlName="perfil" [compareWith]="compararPerfil" >
+        <option></option>
+        <option *ngFor="let perfil of perfis" [ngValue]="perfil">
+          {{ perfil.perfil }}
+        </option>
+      </select>
+      <mat-error *ngIf="formUser.get('perfil').errors" >
+        <mat-error *ngFor="let e of getError('perfil')">
+          {{ e  }}
+        </mat-error>
+      </mat-error>
     </mat-form-field>
   </p>
 
@@ -38,5 +69,14 @@
     <button mat-raised-button type="reset" color="primary" (click)="resetar()">Reset</button>
     <button mat-raised-button type="submit" color="warn" [disabled]="formUser.invalid" style="margin-left: 20px;">Salvar</button>
   </p>
+  <div>
+    <!-- {{formUser.get('perfil').value.perfil | json }}
+    {{formUser.get('perfil').value.id | json }}
+    {{selectedPerfil | json }} -->
+  </div>
 </form>
 </mat-card>
+
+<!-- <button mat-mini-fab color="primary" aria-label="Editar" routerLink="form-perfil/">
+  <mat-icon class="material-icons-round">library_add_check</mat-icon>
+</button> -->

@@ -1,29 +1,32 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+  <mat-sidenav #sidenav class="sidenav" *ngIf="logadoNav()">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home" routerLinkActive="active">Home</a>
-      <a mat-list-item routerLink="/usuario">Usuario</a>
+      <a mat-list-item routerLink="/usuario" routerLinkActive="active">Usuario</a>
+      <a mat-list-item routerLink="/usuario/perfil" routerLinkActive="active">Perfil</a>
+      <a mat-list-item routerLink="/produto" routerLinkActive="active">Produto</a>
+      <a mat-list-item routerLink="/venda" routerLinkActive="active">Venda</a>
+      <a mat-list-item routerLink="/venda/compra" routerLinkActive="active">Compra</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    <mat-toolbar color="primary" *ngIf="logadoNav()">
+      <button type="button" mat-icon-button (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
       </button>
       <span>Projeto Angular</span>
+
+      <span class="example-spacer"></span>
+      <button id="carrinho" type="button" mat-icon-button routerLink="/venda/form-venda">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <button id="logout" type="button" mat-icon-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
     </mat-toolbar>
 
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
-
+    <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

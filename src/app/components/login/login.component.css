@@ -1,8 +1,11 @@
 mat-card {
+  padding-top: 50px;
   margin: auto;
-  margin-top: 20px;
-  width: 70%;
+  margin-top: 10%;
+  width: 30%;
+}
 
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;

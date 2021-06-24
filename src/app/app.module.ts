@@ -12,20 +12,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
+// material form
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 // projeto
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsuarioModule } from './components/usuario/usuario.module';
+import { ProdutoModule } from './components/produto/produto.module';
+import { ProdutoService } from './core/service/produto.service';
+import { VendaModule } from './components/venda/venda.module';
+import { LoginService } from './core/service/login.service';
+import { AuthGuard } from './core/guards/auth.guard';
+import { VendaService } from './core/service/venda.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MainNavComponent],
+  declarations: [AppComponent, HomeComponent, MainNavComponent, LoginComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -33,6 +40,8 @@ import { UsuarioModule } from './components/usuario/usuario.module';
 
     AppRoutingModule,
     UsuarioModule,
+    ProdutoModule,
+    VendaModule,
 
     // MaterialModule
     BrowserAnimationsModule,
@@ -49,7 +58,7 @@ import { UsuarioModule } from './components/usuario/usuario.module';
     MatCardModule,
   ],
   exports: [],
-  providers: [],
+  providers: [LoginService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

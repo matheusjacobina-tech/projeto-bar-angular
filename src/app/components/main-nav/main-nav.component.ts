@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+// angular
+import { Router } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+// projeto
+import { UsuarioService } from 'src/app/core/service/usuario.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -9,13 +11,16 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent {
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  constructor(private router: Router) {}
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  logadoNav(): boolean {
+    return UsuarioService.logado();
+  }
 
+  logout(): void {
+    UsuarioService.deslogado();
+    this.router.navigate(['login']);
+  }
 }
