@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 // projeto
 import { AppComponent } from './app.component';
@@ -40,7 +41,12 @@ import { UsuarioModule } from './components/usuario/usuario.module';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+
+    // material form
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
   ],
   exports: [],
   providers: [],

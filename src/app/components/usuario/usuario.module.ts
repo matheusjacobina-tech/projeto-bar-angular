@@ -7,6 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 // angular
 import { CommonModule } from '@angular/common';
@@ -16,7 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { UsuarioComponent } from './usuario.component';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [UsuarioComponent, UsuarioFormComponent],
@@ -39,6 +41,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatTableModule,
     MatInputModule,
     MatCardModule,
+    MatSelectModule,
+
+    // MatPaginatorModule
   ],
 })
 export class UsuarioModule {}
